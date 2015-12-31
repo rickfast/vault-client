@@ -1,4 +1,4 @@
-package com.orbitz.vault.model.auth;
+package com.orbitz.vault.auth.model;
 
 /**
  * Created by rfast on 12/31/15.

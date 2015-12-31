@@ -1,4 +1,4 @@
-package com.orbitz.vault.model;
+package com.orbitz.vault.sys.model;
 
 import com.google.gson.annotations.SerializedName;
 

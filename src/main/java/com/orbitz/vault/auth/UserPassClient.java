@@ -1,17 +1,17 @@
 package com.orbitz.vault.auth;
 
-import com.orbitz.vault.model.auth.LoginResponse;
-import com.orbitz.vault.model.auth.Password;
+import com.orbitz.vault.auth.model.LoginResponse;
+import com.orbitz.vault.auth.model.Password;
 import retrofit.Retrofit;
 import retrofit.http.Body;
 import retrofit.http.POST;
 import retrofit.http.Path;
 
-public class UserPass {
+public class UserPassClient {
 
     private Api api;
 
-    public UserPass(Retrofit retrofit) {
+    public UserPassClient(Retrofit retrofit) {
         api = retrofit.create(Api.class);
     }
 

@@ -1,4 +1,4 @@
-package com.orbitz.vault.model;
+package com.orbitz.vault.secret.model;
 
 public class Secret {
 

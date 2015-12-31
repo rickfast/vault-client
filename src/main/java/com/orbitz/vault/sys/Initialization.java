@@ -1,6 +1,6 @@
-package com.orbitz.vault;
+package com.orbitz.vault.sys;
 
-import com.orbitz.vault.model.InitResponse;
+import com.orbitz.vault.sys.model.InitResponse;
 import retrofit.http.GET;
 import retrofit.http.Header;
 

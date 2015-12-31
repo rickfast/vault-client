@@ -1,6 +1,6 @@
-package com.orbitz.vault;
+package com.orbitz.vault.sys;
 
-import com.orbitz.vault.model.Mount;
+import com.orbitz.vault.sys.model.Mount;
 import retrofit.http.Body;
 import retrofit.http.GET;
 import retrofit.http.Header;

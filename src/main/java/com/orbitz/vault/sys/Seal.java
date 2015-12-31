@@ -1,6 +1,6 @@
-package com.orbitz.vault;
+package com.orbitz.vault.sys;
 
-import com.orbitz.vault.model.SealStatus;
+import com.orbitz.vault.sys.model.SealStatus;
 import retrofit.http.GET;
 import retrofit.http.Header;
 import retrofit.http.PUT;
