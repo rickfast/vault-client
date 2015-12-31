@@ -2,7 +2,7 @@
 
 Work in progress
 
-## Examples
+## Example
 
 ```java
 import static com.orbitz.vault.Vault.Builder.builder;
