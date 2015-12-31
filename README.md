@@ -12,9 +12,7 @@ UserPassClient userPass = vault.userPass();
 
 String token = userPass.login("rickfast", "mypassword");
 
-vault.setToken(token);
-
-SecretClient secretClient = vault.secret();
+SecretClient secretClient = vault.secret(token);
 
 System.out.println(secretClient.getSecret("foo"));
 ```

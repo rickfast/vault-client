@@ -3,48 +3,48 @@ package com.orbitz.vault;
 import com.orbitz.vault.auth.UserPassClient;
 import com.orbitz.vault.secret.SecretClient;
 import com.orbitz.vault.sys.SysClient;
-import com.orbitz.vault.util.AuthTokenMissingException;
+import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 
 public class Vault
 {
-    public static final String X_VAULT_TOKEN = "X-Vault-Token";
-
-    private String token;
     private Retrofit retrofit;
 
-    private Vault(String host, String token) {
-        this.token = token;
+    private ConcurrentMap<String, SysClient> sysClients =
+            new ConcurrentHashMap<>();
+    private ConcurrentMap<String, SecretClient> secretClients =
+            new ConcurrentHashMap<>();
 
-        retrofit = new Retrofit.Builder().baseUrl(host).build();
+    private Vault(String host, int port) throws MalformedURLException {
+        retrofit = new Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl(new URL("http", host, port, "").toExternalForm())
+                .build();
     }
 
-    private void assertToken() {
-        if(token == null) {
-            throw new AuthTokenMissingException();
-        }
+    public SysClient sys(String token) {
+        return sysClients.computeIfAbsent(token,
+                (t) -> new SysClient(retrofit, t));
     }
 
-    public SysClient sys() {
-        return new SysClient(retrofit, token);
-    }
-
-    public SecretClient secret() {
-        return new SecretClient(retrofit, token);
+    public SecretClient secret(String token) {
+        return secretClients.computeIfAbsent(token,
+                (t) -> new SecretClient(retrofit, t));
     }
 
     public UserPassClient userPass() {
         return new UserPassClient(retrofit);
     }
 
-    public void setToken(String token) {
-        this.token = token;
-    }
-
     public static class Builder {
 
         private String host = "localhost";
-        private String token;
+        private int port = 8200;
 
         public static Builder builder() {
             return new Builder();
@@ -60,14 +60,18 @@ public class Vault
             return this;
         }
 
-        public Builder token(String token) {
-            this.token = token;
+        public Builder port(int port) {
+            this.port = port;
 
             return this;
         }
 
         public Vault build() {
-            return new Vault(host, token);
+            try {
+                return new Vault(host, port);
+            } catch (MalformedURLException e) {
+                throw new RuntimeException("Bad Vault hostname");
+            }
         }
     }
 }

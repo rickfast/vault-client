@@ -9,7 +9,7 @@ import retrofit.http.Path;
 
 import java.util.Map;
 
-import static com.orbitz.vault.Vault.X_VAULT_TOKEN;
+import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 
 interface Mounts {
 

@@ -7,7 +7,7 @@ import retrofit.http.Header;
 import retrofit.http.POST;
 import retrofit.http.Path;
 
-import static com.orbitz.vault.Vault.X_VAULT_TOKEN;
+import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 
 interface Secrets {
 
