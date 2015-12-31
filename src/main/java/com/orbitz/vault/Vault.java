@@ -1,6 +1,8 @@
 package com.orbitz.vault;
 
 import com.orbitz.vault.auth.UserPassClient;
+import com.orbitz.vault.secret.SecretClient;
+import com.orbitz.vault.sys.SysClient;
 import com.orbitz.vault.util.AuthTokenMissingException;
 import retrofit.Retrofit;
 
@@ -21,6 +23,14 @@ public class Vault
         if(token == null) {
             throw new AuthTokenMissingException();
         }
+    }
+
+    public SysClient sys() {
+        return new SysClient(retrofit, token);
+    }
+
+    public SecretClient secret() {
+        return new SecretClient(retrofit, token);
     }
 
     public UserPassClient userPass() {
