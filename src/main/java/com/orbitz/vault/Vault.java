@@ -3,6 +3,7 @@ package com.orbitz.vault;
 import com.orbitz.vault.auth.UserPass;
 import com.orbitz.vault.model.InitResponse;
 import com.orbitz.vault.model.SealStatus;
+import com.orbitz.vault.util.AuthTokenMissingException;
 import retrofit.Retrofit;
 
 public class Vault
@@ -25,6 +26,12 @@ public class Vault
         seal = retrofit.create(Seal.class);
     }
 
+    private void assertToken() {
+        if(token == null) {
+            throw new AuthTokenMissingException();
+        }
+    }
+
     public UserPass userPass() {
         return new UserPass(retrofit);
     }
@@ -34,22 +41,27 @@ public class Vault
     }
 
     public InitResponse init() {
+        assertToken();
         return initialization.init(token);
     }
 
     public SealStatus getSealStatus() {
+        assertToken();
         return seal.getSealStatus(token);
     }
 
     public void seal() {
+        assertToken();
         seal.seal(token);
     }
 
     public SealStatus unseal(String key) {
+        assertToken();
         return seal.unseal(key, token);
     }
 
     public SealStatus unseal(boolean reset) {
+        assertToken();
         return seal.unseal(reset, token);
     }
 
