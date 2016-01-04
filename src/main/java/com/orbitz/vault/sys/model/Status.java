@@ -2,7 +2,7 @@ package com.orbitz.vault.sys.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class SealStatus {
+public class Status {
 
     private boolean sealed;
     @SerializedName("t")
