@@ -4,7 +4,7 @@
     <groupId>com.orbitz.vault</groupId>
     <artifactId>vault-client</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>vault-client</name>
     <url>http://maven.apache.org</url>
     <dependencies>
