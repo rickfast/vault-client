@@ -14,19 +14,19 @@ public class VaultTests extends TestSupport {
     public void shouldInit() throws LoginFailedException {
         Vault vault = vault();
 
-        assertTrue(vault.sys(token()).init().isInitialized());
+        assertTrue(vault.sys(login()).init().isInitialized());
     }
 
     @Test
     public void shouldGetSecretClient() {
-        SecretClient secretClient = vault().secret(token());
+        SecretClient secretClient = vault().secret(login());
 
         assertNotNull(secretClient);
     }
 
     @Test
     public void shouldGetSysClient() {
-        SysClient sysClient = vault().sys(token());
+        SysClient sysClient = vault().sys(login());
 
         assertNotNull(sysClient);
     }

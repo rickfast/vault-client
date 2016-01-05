@@ -16,11 +16,11 @@ import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 interface Mounts {
 
     @GET("/v1/sys/mounts")
-    @Headers({ "Accept: application/json" })
+    @Headers({"Accept: application/json"})
     Call<Map<String, Mount>> getMounts(@Header(X_VAULT_TOKEN) String token);
 
     @GET("/v1/sys/mounts/{mountPoint}/tune")
-    @Headers({ "Accept: application/json" })
+    @Headers({"Accept: application/json"})
     Call<Mount.Config> getConfig(@Path("mountPoint") String mountPoint,
                                  @Header(X_VAULT_TOKEN) String token);
 
@@ -29,16 +29,16 @@ interface Mounts {
             "Content-Type: application/json",
             "Accept: application/json"
     })
-    void mount(@Path("mountPoint") String mountPoint,
-               @Body Mount mount,
-               @Header(X_VAULT_TOKEN) String token);
+    Call<Void> mount(@Path("mountPoint") String mountPoint,
+                     @Body Mount mount,
+                     @Header(X_VAULT_TOKEN) String token);
 
     @POST("/v1/sys/mounts/{mountPoint}/tune")
     @Headers({
             "Content-Type: application/json",
             "Accept: application/json"
     })
-    void tune(@Path("mountPoint") String mountPoint,
-              @Body Mount.Config config,
-              @Header(X_VAULT_TOKEN) String token);
+    Call<Void> tune(@Path("mountPoint") String mountPoint,
+                    @Body Mount.Config config,
+                    @Header(X_VAULT_TOKEN) String token);
 }

@@ -12,9 +12,10 @@ public class SecretTests extends TestSupport {
     public void shouldWriteAndGetSecret() {
         Vault vault = vault();
         String secret = UUID.randomUUID().toString();
+        String token = login();
 
-        vault.secret(token()).writeSecret("whatever", secret);
+        vault.secret(token).writeSecret("whatever", secret);
 
-        assertEquals(secret, vault.secret(token()).getSecret("whatever"));
+        assertEquals(secret, vault.secret(token).getSecret("whatever"));
     }
 }

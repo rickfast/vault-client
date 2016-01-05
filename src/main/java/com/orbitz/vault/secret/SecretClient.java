@@ -20,7 +20,7 @@ public class SecretClient {
 
     public String getSecret(String name) {
         assertToken(token);
-        return extract(secrets.getSecret(name, token)).getValue();
+        return extract(secrets.getSecret(name, token)).getData().getValue();
     }
 
     public void writeSecret(String name, String value) {

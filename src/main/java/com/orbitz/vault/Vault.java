@@ -1,5 +1,7 @@
 package com.orbitz.vault;
 
+import com.google.gson.FieldNamingPolicy;
+import com.google.gson.GsonBuilder;
 import com.orbitz.vault.auth.UserPassClient;
 import com.orbitz.vault.secret.SecretClient;
 import com.orbitz.vault.sys.SysClient;
@@ -22,7 +24,10 @@ public class Vault
 
     private Vault(String host, int port) throws MalformedURLException {
         retrofit = new Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory
+                        .create(new GsonBuilder()
+                                .setFieldNamingPolicy(FieldNamingPolicy
+                                        .LOWER_CASE_WITH_UNDERSCORES).create()))
                 .baseUrl(new URL("http", host, port, "").toExternalForm())
                 .build();
     }
@@ -37,7 +42,7 @@ public class Vault
                 (t) -> new SecretClient(retrofit, t));
     }
 
-    public UserPassClient userPass() {
+    public UserPassClient userPassAuth() {
         return new UserPassClient(retrofit);
     }
 

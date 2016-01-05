@@ -1,6 +1,7 @@
 package com.orbitz.vault.secret;
 
 import com.orbitz.vault.secret.model.Secret;
+import com.orbitz.vault.secret.model.SecretResponse;
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -15,8 +16,8 @@ interface Secrets {
 
     @GET("/v1/secret/{name}")
     @Headers({"Accept: application/json"})
-    Call<Secret> getSecret(@Path("name") String name,
-                           @Header(X_VAULT_TOKEN) String token);
+    Call<SecretResponse> getSecret(@Path("name") String name,
+                                   @Header(X_VAULT_TOKEN) String token);
 
     @POST("/v1/secret/{name}")
     @Headers({
