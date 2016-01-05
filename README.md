@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rickfast/vault-client.svg)](https://travis-ci.org/rickfast/vault-client)
+[![Build Status](https://travis-ci.org/rickfast/vault-client.svg?branch=master)](https://travis-ci.org/rickfast/vault-client)
 [ ![Download](https://api.bintray.com/packages/orbitz/vault-client/vault-client/images/download.svg) ](https://bintray.com/orbitz/vault-client/vault-client/_latestVersion)
 
 # Vault Client for Java
