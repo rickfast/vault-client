@@ -1,10 +1,7 @@
 package com.orbitz.vault.sys.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class InitResponse {
 
-    @SerializedName("initialize")
     private boolean initialized;
 
     public boolean isInitialized() {

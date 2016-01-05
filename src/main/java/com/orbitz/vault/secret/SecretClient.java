@@ -3,6 +3,8 @@ package com.orbitz.vault.secret;
 import com.orbitz.vault.secret.model.Secret;
 import retrofit.Retrofit;
 
+import static com.orbitz.vault.util.Http.extract;
+import static com.orbitz.vault.util.Http.handle;
 import static com.orbitz.vault.util.Tokens.assertToken;
 
 public class SecretClient {
@@ -18,11 +20,11 @@ public class SecretClient {
 
     public String getSecret(String name) {
         assertToken(token);
-        return secrets.getSecret(name, token).getValue();
+        return extract(secrets.getSecret(name, token)).getValue();
     }
 
     public void writeSecret(String name, String value) {
         assertToken(token);
-        secrets.writeSecret(name, Secret.of(value), token);
+        handle(secrets.writeSecret(name, Secret.of(value), token));
     }
 }

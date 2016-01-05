@@ -2,10 +2,14 @@ package com.orbitz.vault.auth;
 
 import com.orbitz.vault.auth.model.LoginResponse;
 import com.orbitz.vault.auth.model.Password;
+import retrofit.Call;
 import retrofit.Retrofit;
 import retrofit.http.Body;
+import retrofit.http.Headers;
 import retrofit.http.POST;
 import retrofit.http.Path;
+
+import static com.orbitz.vault.util.Http.extract;
 
 public class UserPassClient {
 
@@ -17,10 +21,10 @@ public class UserPassClient {
 
     public String login(String username, String password) throws LoginFailedException {
         try {
-            LoginResponse loginResponse =
-                    api.login(username, new Password(password));
+            LoginResponse response =
+                    extract(api.login(username, new Password(password)));
 
-            return loginResponse.getAuth().getClientToken();
+            return response.getAuth().getClientToken();
         } catch (Exception ex) {
             throw new LoginFailedException();
         }
@@ -28,8 +32,12 @@ public class UserPassClient {
 
     private interface Api {
 
-        @POST("/v1/sys/auth/userpass/login/{username}")
-        LoginResponse login(@Path("username") String username,
-                            @Body Password password);
+        @POST("/v1/auth/userpass/login/{username}")
+        @Headers({
+                "Content-Type: application/json",
+                "Accept: application/json"
+        })
+        Call<LoginResponse> login(@Path("username") String username,
+                                  @Body Password password);
     }
 }

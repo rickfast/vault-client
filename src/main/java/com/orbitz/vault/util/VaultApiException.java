@@ -1,7 +1,13 @@
 package com.orbitz.vault.util;
 
-/**
- * Created by rfast on 12/31/15.
- */
-public class VaultApiException {
+public class VaultApiException extends RuntimeException {
+
+    public VaultApiException(int code, String message) {
+        super(String.format("Vault request failed with status [%s]: %s",
+                code, message));
+    }
+
+    public VaultApiException(Throwable throwable) {
+        super("Vault request failed", throwable);
+    }
 }
