@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/rickfast/vault.svg)](https://travis-ci.org/rickfast/vault)
+
 # Vault Client for Java
 
 Work in progress
