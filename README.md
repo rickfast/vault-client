@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/rickfast/vault.svg)](https://travis-ci.org/rickfast/vault)
+[![Build Status](https://travis-ci.org/rickfast/vault-client.svg)](https://travis-ci.org/rickfast/vault-client)
 
 # Vault Client for Java
 

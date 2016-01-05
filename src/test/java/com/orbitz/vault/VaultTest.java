@@ -8,7 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-public class VaultTests extends TestSupport {
+public class VaultTest extends TestSupport {
 
     @Test
     public void shouldInit() throws LoginFailedException {

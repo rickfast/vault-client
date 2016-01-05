@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
-public class SecretTests extends TestSupport {
+public class SecretTest extends TestSupport {
 
     @Test
     public void shouldWriteAndGetSecret() {
