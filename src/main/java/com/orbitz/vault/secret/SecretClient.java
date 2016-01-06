@@ -13,18 +13,18 @@ public class SecretClient {
     private String token;
 
     public SecretClient(Retrofit retrofit, String token) {
+        assertToken(token);
+
         secrets = retrofit.create(Secrets.class);
 
         this.token = token;
     }
 
     public String getSecret(String name) {
-        assertToken(token);
         return extract(secrets.getSecret(name, token)).getData().getValue();
     }
 
     public void writeSecret(String name, String value) {
-        assertToken(token);
         handle(secrets.writeSecret(name, Secret.of(value), token));
     }
 }

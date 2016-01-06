@@ -11,7 +11,7 @@ Work in progress
 import static com.orbitz.vault.Vault.Builder.builder;
 
 Vault vault = builder().host("localhost").build();
-UserPassClient userPass = vault.userPass();
+UserPassClient userPass = vault.authClients().userPass();
 
 String token = userPass.login("rickfast", "mypassword");
 

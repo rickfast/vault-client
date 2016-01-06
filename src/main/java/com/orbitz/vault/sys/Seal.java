@@ -16,9 +16,9 @@ interface Seal {
     @Headers({"Accept: application/json"})
     Call<Status> getSealStatus(@Header(X_VAULT_TOKEN) String token);
 
-    @GET("/v1/sys/seal")
+    @PUT("/v1/sys/seal")
     @Headers({"Accept: application/json"})
-    void seal(@Header(X_VAULT_TOKEN) String token);
+    Call<Void> seal(@Header(X_VAULT_TOKEN) String token);
 
     @PUT("/v1/sys/unseal")
     @Headers({

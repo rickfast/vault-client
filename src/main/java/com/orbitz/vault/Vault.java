@@ -2,7 +2,7 @@ package com.orbitz.vault;
 
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
-import com.orbitz.vault.auth.UserPassClient;
+import com.orbitz.vault.auth.AuthClients;
 import com.orbitz.vault.secret.SecretClient;
 import com.orbitz.vault.sys.SysClient;
 import retrofit.GsonConverterFactory;
@@ -42,8 +42,8 @@ public class Vault
                 (t) -> new SecretClient(retrofit, t));
     }
 
-    public UserPassClient userPassAuth() {
-        return new UserPassClient(retrofit);
+    public AuthClients authClients() {
+        return new AuthClients(retrofit);
     }
 
     public static class Builder {

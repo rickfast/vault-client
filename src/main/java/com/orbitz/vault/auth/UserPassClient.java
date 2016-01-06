@@ -15,7 +15,7 @@ public class UserPassClient {
 
     private Api api;
 
-    public UserPassClient(Retrofit retrofit) {
+    UserPassClient(Retrofit retrofit) {
         api = retrofit.create(Api.class);
     }
 

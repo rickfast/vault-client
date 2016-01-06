@@ -7,7 +7,7 @@ public class TestSupport {
 
     protected String login() {
         Vault vault1 = vault();
-        UserPassClient userPassClient = vault1.userPassAuth();
+        UserPassClient userPassClient = vault1.authClients().userPass();
 
         try {
             return userPassClient.login("rickfast", "foo");
