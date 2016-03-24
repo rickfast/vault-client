@@ -1,7 +1,7 @@
 package com.orbitz.vault.util;
 
-import retrofit.Call;
-import retrofit.Response;
+import retrofit2.Call;
+import retrofit2.Response;
 
 import java.io.IOException;
 
@@ -15,10 +15,10 @@ public class Http {
             throw new VaultApiException(e);
         }
 
-        if(response.isSuccess()) {
+        if(response.isSuccessful()) {
             return response.body();
         } else {
-            throw new VaultApiException(response.code(), response.message());
+            throw new VaultApiException(response.code(), response);
         }
     }
 
@@ -30,8 +30,8 @@ public class Http {
             throw new VaultApiException(e);
         }
 
-        if(!response.isSuccess()) {
-            throw new VaultApiException(response.code(), response.message());
+        if(!response.isSuccessful()) {
+            throw new VaultApiException(response.code(), response);
         }
     }
 }

@@ -1,5 +1,6 @@
 package com.orbitz.vault;
 
+import com.google.common.collect.ImmutableMap;
 import org.junit.Test;
 
 import java.util.UUID;
@@ -14,8 +15,8 @@ public class SecretTest extends TestSupport {
         String secret = UUID.randomUUID().toString();
         String token = login();
 
-        vault.secretClient(token).writeSecret("secret/whatever", secret);
+        vault.secretClient(token).writeSecret("secret/whatever", ImmutableMap.of("value", secret));
 
-        assertEquals(secret, vault.secretClient(token).getSecret("secret/whatever"));
+        assertEquals(secret, vault.secretClient(token).getSecret("secret/whatever").getData().get("value"));
     }
 }

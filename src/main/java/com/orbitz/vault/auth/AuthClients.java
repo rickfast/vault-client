@@ -1,6 +1,6 @@
 package com.orbitz.vault.auth;
 
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
 
 public class AuthClients {
 

@@ -2,11 +2,10 @@ package com.orbitz.vault.sys;
 
 import com.orbitz.vault.sys.model.RenewResponse;
 import com.orbitz.vault.sys.model.Renewal;
-import retrofit.Call;
-import retrofit.http.Body;
-import retrofit.http.Headers;
-import retrofit.http.PUT;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.http.*;
+
+import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 
 public interface Lease {
 
@@ -15,7 +14,8 @@ public interface Lease {
             "Content-Type: application/json",
             "Accept: application/json"
     })
-    Call<RenewResponse> renewLease(@Path("leaseId") String leaseId);
+    Call<RenewResponse> renewLease(@Path(value = "leaseId", encoded = true) String leaseId,
+                                   @Header(X_VAULT_TOKEN) String token);
 
     @PUT("/v1/sys/renew/{leaseId}")
     @Headers({
@@ -23,5 +23,6 @@ public interface Lease {
             "Accept: application/json"
     })
     Call<RenewResponse> renewLease(@Path("leaseId") String leaseId,
-                             @Body Renewal renewal);
+                                   @Body Renewal renewal,
+                                   @Header(X_VAULT_TOKEN) String token);
 }

@@ -2,12 +2,12 @@ package com.orbitz.vault.auth;
 
 import com.orbitz.vault.auth.model.LoginResponse;
 import com.orbitz.vault.auth.model.Password;
-import retrofit.Call;
-import retrofit.Retrofit;
-import retrofit.http.Body;
-import retrofit.http.Headers;
-import retrofit.http.POST;
-import retrofit.http.Path;
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.http.Body;
+import retrofit2.http.Headers;
+import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 import static com.orbitz.vault.util.Http.extract;
 

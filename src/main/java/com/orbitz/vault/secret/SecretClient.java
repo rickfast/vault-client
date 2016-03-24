@@ -1,7 +1,9 @@
 package com.orbitz.vault.secret;
 
-import com.orbitz.vault.secret.model.Secret;
-import retrofit.Retrofit;
+import com.orbitz.vault.secret.model.SecretResponse;
+import retrofit2.Retrofit;
+
+import java.util.Map;
 
 import static com.orbitz.vault.util.Http.extract;
 import static com.orbitz.vault.util.Http.handle;
@@ -20,11 +22,11 @@ public class SecretClient {
         this.token = token;
     }
 
-    public String getSecret(String name) {
-        return extract(secrets.getSecret(name, token)).getData().getValue();
+    public SecretResponse getSecret(String name) {
+        return extract(secrets.getSecret(name, token));
     }
 
-    public void writeSecret(String name, String value) {
-        handle(secrets.writeSecret(name, Secret.of(value), token));
+    public void writeSecret(String name, Map<String, String> secret) {
+        handle(secrets.writeSecret(name, secret, token));
     }
 }

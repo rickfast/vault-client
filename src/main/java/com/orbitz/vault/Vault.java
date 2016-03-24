@@ -5,8 +5,8 @@ import com.google.gson.GsonBuilder;
 import com.orbitz.vault.auth.AuthClients;
 import com.orbitz.vault.secret.SecretClient;
 import com.orbitz.vault.sys.SysClient;
-import retrofit.GsonConverterFactory;
-import retrofit.Retrofit;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import java.net.MalformedURLException;
 import java.net.URL;

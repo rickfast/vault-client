@@ -1,15 +1,11 @@
 package com.orbitz.vault.auth.model;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 import java.util.Map;
 
 public class LoginResponse {
 
-    @SerializedName("lease_id")
     private String leaseId;
-    @SerializedName("lease_duration")
     private Long leaseDuration;
     private String data;
     private Auth auth;
@@ -47,11 +43,9 @@ public class LoginResponse {
     }
 
     public static class Auth {
-        @SerializedName("client_token")
         private String clientToken;
         private List<String> policies;
         private Map<String, String> metadata;
-        @SerializedName("lease_duration")
         private Long leaseDuration;
         private Boolean renewable;
 

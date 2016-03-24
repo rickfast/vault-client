@@ -1,11 +1,13 @@
 package com.orbitz.vault.secret.model;
 
+import java.util.Map;
+
 public class SecretResponse {
 
     private String leaseId;
     private Boolean renewable;
     private Long leaseDuration;
-    private Secret data;
+    private Map<String, String> data;
 
     public String getLeaseId() {
         return leaseId;
@@ -31,11 +33,11 @@ public class SecretResponse {
         this.leaseDuration = leaseDuration;
     }
 
-    public Secret getData() {
+    public Map<String, String> getData() {
         return data;
     }
 
-    public void setData(Secret data) {
+    public void setData(Map<String, String> data) {
         this.data = data;
     }
 }

@@ -1,8 +1,5 @@
 package com.orbitz.vault.auth.model;
 
-/**
- * Created by rfast on 12/31/15.
- */
 public class Password {
 
     private String password;
