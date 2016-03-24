@@ -14,12 +14,12 @@ import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 
 interface Secrets {
 
-    @GET("/v1/secret/{name}")
+    @GET("/v1/{name}")
     @Headers({"Accept: application/json"})
     Call<SecretResponse> getSecret(@Path("name") String name,
                                    @Header(X_VAULT_TOKEN) String token);
 
-    @POST("/v1/secret/{name}")
+    @POST("/v1/{name}")
     @Headers({
             "Content-Type: application/json",
             "Accept: application/json"

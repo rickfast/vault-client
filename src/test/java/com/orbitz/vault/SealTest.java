@@ -11,7 +11,7 @@ public class SealTest extends TestSupport {
     @Test
     public void shouldGetSealStatus() {
         Vault vault = vault();
-        SysClient sysClient = vault.sys(login());
+        SysClient sysClient = vault.sysClient(login());
         Status status = sysClient.getSealStatus();
 
         assertFalse(status.isSealed());

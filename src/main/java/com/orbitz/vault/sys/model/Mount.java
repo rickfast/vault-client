@@ -1,7 +1,5 @@
 package com.orbitz.vault.sys.model;
 
-import com.google.gson.annotations.SerializedName;
-
 public class Mount {
 
     private String type;
@@ -34,9 +32,7 @@ public class Mount {
 
     public static class Config {
 
-        @SerializedName("default_lease_ttl")
         private Long defaultLeaseTtl;
-        @SerializedName("max_lease_ttl")
         private Long maxLeaseTtl;
 
         public Long getDefaultLeaseTtl() {

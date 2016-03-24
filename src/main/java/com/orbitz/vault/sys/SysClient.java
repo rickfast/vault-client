@@ -1,6 +1,7 @@
 package com.orbitz.vault.sys;
 
 import com.orbitz.vault.sys.model.InitResponse;
+import com.orbitz.vault.sys.model.RenewResponse;
 import com.orbitz.vault.sys.model.Status;
 import retrofit.Retrofit;
 
@@ -14,6 +15,7 @@ public class SysClient {
 
     private Initialization initialization;
     private Seal seal;
+    private Lease lease;
     private String token;
 
     public SysClient(Retrofit retrofit, String token) {
@@ -47,5 +49,9 @@ public class SysClient {
 
     public Status unseal(boolean reset) {
         return extract(seal.unseal(reset, token));
+    }
+
+    public RenewResponse renewLease(String leaseId) {
+        return extract(lease.renewLease(leaseId));
     }
 }
