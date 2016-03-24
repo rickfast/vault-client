@@ -15,10 +15,10 @@ public class LeaseTest extends TestSupport {
         String token = login();
 
         SecretResponse response =
-                vault.secretClient(token).getSecret("mysql/creds/readonly");
+                vault.secret(token).getSecret("mysql/creds/readonly");
 
         String leaseId = response.getLeaseId();
 
-        assertEquals(leaseId, vault.sysClient(token).renewLease(leaseId, 1L, TimeUnit.HOURS).getLeaseId());
+        assertEquals(leaseId, vault.sys(token).renewLease(leaseId, 1L, TimeUnit.HOURS).getLeaseId());
     }
 }

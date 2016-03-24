@@ -32,12 +32,12 @@ public class Vault
                 .build();
     }
 
-    public SysClient sysClient(String token) {
+    public SysClient sys(String token) {
         return sysClients.computeIfAbsent(token,
                 (t) -> new SysClient(retrofit, t));
     }
 
-    public SecretClient secretClient(String token) {
+    public SecretClient secret(String token) {
         return secretClients.computeIfAbsent(token,
                 (t) -> new SecretClient(retrofit, t));
     }
