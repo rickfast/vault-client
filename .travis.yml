@@ -10,12 +10,12 @@ before_install:
   - wget https://releases.hashicorp.com/vault/0.4.0/vault_0.4.0_linux_amd64.zip
   - unzip vault_0.4.0_linux_amd64.zip
   - ./vault server -dev &
+  - mysql -e "create database IF NOT EXISTS test;" -uroot
 before_script:
-  - mysql -e 'create database vault;'
   - ./vault auth-enable userpass
   - ./vault write auth/userpass/users/rickfast password=foo policies=root
   - ./vault mount mysql
-  - ./vault write mysql/config/connection connection_url="root:@tcp(127.0.0.1:3306)/vault"
+  - ./vault write mysql/config/connection connection_url="root:@tcp(127.0.0.1:3306)/test"
   - ./vault write mysql/config/lease lease=1h lease_max=24h
   - ./vault write mysql/roles/readonly sql="CREATE USER '{{name}}'@'%' IDENTIFIED BY '{{password}}';GRANT SELECT ON *.* TO '{{name}}'@'%';"
 script: mvn clean test
