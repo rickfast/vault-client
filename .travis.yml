@@ -6,12 +6,12 @@ env:
 sudo: required
 services:
   - docker
-before_script:
+before_install:
   - docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -d -p 3306:3306 mysql
-  - docker ps
   - wget https://releases.hashicorp.com/vault/0.4.0/vault_0.4.0_linux_amd64.zip
   - unzip vault_0.4.0_linux_amd64.zip
   - ./vault server -dev &
+before_script:
   - ./vault auth-enable userpass
   - ./vault write auth/userpass/users/rickfast password=foo policies=root
   - ./vault mount mysql
