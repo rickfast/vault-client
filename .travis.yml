@@ -5,8 +5,8 @@ env:
   - VAULT_ADDR=http://localhost:8200
 sudo: required
 before_install:
-  - wget https://releases.hashicorp.com/vault/0.4.0/vault_0.4.0_linux_amd64.zip
-  - unzip vault_0.4.0_linux_amd64.zip
+  - wget https://releases.hashicorp.com/vault/0.5.2/vault_0.5.2_linux_amd64.zip
+  - unzip vault_0.5.2_linux_amd64.zip
   - ./vault server -dev &
 before_script:
   - ./vault auth-enable userpass
