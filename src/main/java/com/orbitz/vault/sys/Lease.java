@@ -7,7 +7,7 @@ import retrofit2.http.*;
 
 import static com.orbitz.vault.util.Tokens.X_VAULT_TOKEN;
 
-public interface Lease {
+interface Lease {
 
     @PUT("/v1/sys/renew/{leaseId}")
     @Headers({

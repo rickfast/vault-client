@@ -13,4 +13,8 @@ public class AuthClients {
     public UserPassClient userPass() {
         return new UserPassClient(retrofit);
     }
+
+    public AppIdClient appIdClient() {
+        return new AppIdClient(retrofit);
+    }
 }
