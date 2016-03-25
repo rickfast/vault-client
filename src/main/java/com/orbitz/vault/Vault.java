@@ -14,7 +14,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.function.Function;
 
 public class Vault
 {
@@ -43,23 +42,19 @@ public class Vault
     }
 
     public SysClient sys(String token) {
-        return sysClients.computeIfAbsent(token,
-                new Function<String, SysClient>() {
-                    @Override
-                    public SysClient apply(String s) {
-                        return new SysClient(retrofit, s);
-                    }
-                });
+        if (!sysClients.containsKey(token)) {
+            sysClients.put(token, new SysClient(retrofit, token));
+        }
+
+        return sysClients.get(token);
     }
 
     public SecretClient secret(String token) {
-        return secretClients.computeIfAbsent(token,
-                new Function<String, SecretClient>() {
-                    @Override
-                    public SecretClient apply(String s) {
-                        return new SecretClient(retrofit, s);
-                    }
-                });
+        if (!secretClients.containsKey(token)) {
+            secretClients.put(token, new SecretClient(retrofit, token));
+        }
+
+        return secretClients.get(token);
     }
 
     public AuthClients authClients() {
