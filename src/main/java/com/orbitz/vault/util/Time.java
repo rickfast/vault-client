@@ -22,7 +22,7 @@ public class Time {
                 unit = "h";
                 break;
             default:
-                throw new RuntimeException("Invalid time unit: " + timeUnit.toString());
+                throw new IllegalArgumentException("Invalid time unit: " + timeUnit.toString());
 
         }
 

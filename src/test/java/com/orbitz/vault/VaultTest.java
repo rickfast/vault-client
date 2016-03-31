@@ -1,7 +1,7 @@
 package com.orbitz.vault;
 
 import com.orbitz.vault.auth.LoginFailedException;
-import com.orbitz.vault.secret.SecretClient;
+import com.orbitz.vault.secret.LogicalClient;
 import com.orbitz.vault.sys.SysClient;
 import org.junit.Test;
 
@@ -19,9 +19,9 @@ public class VaultTest extends TestSupport {
 
     @Test
     public void shouldGetSecretClient() {
-        SecretClient secretClient = vault().secret(login());
+        LogicalClient logicalClient = vault().logical(login());
 
-        assertNotNull(secretClient);
+        assertNotNull(logicalClient);
     }
 
     @Test

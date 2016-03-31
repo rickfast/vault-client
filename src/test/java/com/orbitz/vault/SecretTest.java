@@ -15,8 +15,8 @@ public class SecretTest extends TestSupport {
         String secret = UUID.randomUUID().toString();
         String token = login();
 
-        vault.secret(token).writeSecret("secret/whatever", ImmutableMap.of("value", secret));
+        vault.logical(token).writeSecret("secret/whatever", ImmutableMap.of("value", secret));
 
-        assertEquals(secret, vault.secret(token).getSecret("secret/whatever").getData().get("value"));
+        assertEquals(secret, vault.logical(token).getSecret("secret/whatever").getData().get("value"));
     }
 }

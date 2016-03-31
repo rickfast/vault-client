@@ -9,12 +9,12 @@ import static com.orbitz.vault.util.Http.extract;
 import static com.orbitz.vault.util.Http.handle;
 import static com.orbitz.vault.util.Tokens.assertToken;
 
-public class SecretClient {
+public class LogicalClient {
 
     private Secrets secrets;
     private String token;
 
-    public SecretClient(Retrofit retrofit, String token) {
+    public LogicalClient(Retrofit retrofit, String token) {
         assertToken(token);
 
         secrets = retrofit.create(Secrets.class);

@@ -17,7 +17,7 @@ public class LeaseTest extends TestSupport {
         String token = login();
 
         SecretResponse response =
-                vault.secret(token).getSecret("mysql/creds/readonly");
+                vault.logical(token).getSecret("mysql/creds/readonly");
 
         String leaseId = response.getLeaseId();
 

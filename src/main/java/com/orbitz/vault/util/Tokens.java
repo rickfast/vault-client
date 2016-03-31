@@ -6,7 +6,7 @@ public class Tokens {
 
     public static void assertToken(String token) {
 
-        if(token == null) {
+        if(token == null || token.trim().isEmpty()) {
             throw new AuthTokenMissingException();
         }
     }

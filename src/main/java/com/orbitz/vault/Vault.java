@@ -3,7 +3,7 @@ package com.orbitz.vault;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.GsonBuilder;
 import com.orbitz.vault.auth.AuthClients;
-import com.orbitz.vault.secret.SecretClient;
+import com.orbitz.vault.secret.LogicalClient;
 import com.orbitz.vault.sys.SysClient;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -21,7 +21,7 @@ public class Vault
 
     private ConcurrentMap<String, SysClient> sysClients =
             new ConcurrentHashMap<>();
-    private ConcurrentMap<String, SecretClient> secretClients =
+    private ConcurrentMap<String, LogicalClient> logicalClients =
             new ConcurrentHashMap<>();
 
     private Vault(String host, int port, SSLContext sslContext) throws MalformedURLException {
@@ -49,12 +49,12 @@ public class Vault
         return sysClients.get(token);
     }
 
-    public SecretClient secret(String token) {
-        if (!secretClients.containsKey(token)) {
-            secretClients.put(token, new SecretClient(retrofit, token));
+    public LogicalClient logical(String token) {
+        if (!logicalClients.containsKey(token)) {
+            logicalClients.put(token, new LogicalClient(retrofit, token));
         }
 
-        return secretClients.get(token);
+        return logicalClients.get(token);
     }
 
     public AuthClients authClients() {
